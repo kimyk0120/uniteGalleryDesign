@@ -1,0 +1,213 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanssc.css);
+
+$max-width:100px;
+$max-height:100px;
+$hearIconImgUrl:'/imgs/Heart_icon.png';
+$hearIconOffImgUrl:'/imgs/Heart_icon_off.png';
+$memoIconImgUrl:'/imgs/Memo_icon.png';
+$memoIconOffImgUrl:'/imgs/Memo_icon_NONE.png';
+$speakerImgUrl:'/imgs/Speaker.png';
+
+html,body{
+    font-family: 'Noto Sans CJK', sans-serif;
+}
+
+.GinieMsg{
+    float: right;
+    /* position: relative; */
+    /* top: 6px; */
+    margin-top: 0.8em;
+    color: white;
+    padding-right: 1em;
+}
+
+.dateoverdes{
+
+    position: relative;
+    /* bottom: 44px; */
+    font-size: 0.4rem;
+    font-weight: lighter;
+//    top: 4px;
+    /* left: 0px; */
+    color: white;
+    /* font-weight: lighter; */
+    /* padding-top: 108px; */
+    margin-left: 2.5em;
+}
+
+.ug-textpanel-description{
+        margin-top: 0.5em;
+}
+
+
+#heartPop{
+    position: absolute;
+    z-index: 1111;
+    width: 25%;
+    height: 25%;
+    vertical-align: middle;
+    top:25%;
+    left: 50%;    
+transform: translateX(-50%);
+//    transform: translateX(-50%);
+    
+}
+
+.heartIcon{
+    position: absolute;        
+    width: 100px;
+    height: 18px;
+    background-size: contain;
+    background-repeat: no-repeat;    
+}
+
+
+.heartIcon.on{    
+    background-image: url($hearIconImgUrl);     
+}
+
+.heartIcon.off{
+    background-image: url($hearIconOffImgUrl);     
+}
+
+#memoIcon{
+    position: absolute;
+    z-index: 111111111;
+    /* float: right; */
+    /* display: inline-block; */
+    /* float: right; */
+    right: 1%;
+//    top: 5%;    
+    background-size: contain;
+    background-repeat: no-repeat;    
+    width: 65px;
+    height: 100px;
+}
+
+#memoIcon.on{
+    background-image:url($memoIconImgUrl);
+}
+
+#memoIcon.off{
+    background-image:url($memoIconOffImgUrl);
+}
+
+
+
+
+
+
+
+
+// popup
+.pop-layer .pop-container {
+  padding: 20px 25px;
+}
+
+.pop-layer p.ctxt {
+  color: #666;
+  line-height: 25px;
+}
+
+.pop-layer .btn-r {
+  width: 100%;
+  margin: 10px 0 20px;
+  padding-top: 10px;
+  border-top: 1px solid #DDD;
+  text-align: center;
+}
+
+.pop-layer {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 410px;
+  height: auto;
+  background-color: #fff;
+//  border: 5px solid #3571B5;
+  z-index: 10;
+}
+
+.dim-layer {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.dim-layer .dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+
+.dim-layer .pop-layer {
+  display: block;
+}
+
+button.btn-layerClose {
+  display: inline-block;
+  height: 40px; 
+  width: 80px;
+  padding: 0 14px 0;
+//  border: 1px solid #304a8a;
+  background-color: #3f5a9d;
+  font-size: 15px;
+  color: #fff;
+  line-height: 25px;
+  margin-left: 0.5em; 
+  margin-right: 0.5em;
+  margin-top: 0.54em;
+    &:hover {
+      border: 1px solid #091940;
+      background-color: #1f326a;
+      color: #fff;
+    }    
+}
+
+.pop-conts{
+    h1{
+        font-size: medium;
+        text-align: center;
+    }
+    
+    p.ctxt{
+        text-align: center;
+            height: 180px;
+            padding-top: 20px;
+    }
+    
+    p .speakerImg{
+         
+           z-index: 111111111;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 45px;
+        height: 30px;
+        background-image: url(/imgs/Speaker.png);
+        display: inline-block;
+        position: relative;
+        top: 10px;
+    }
+}
+//.popup
+
+
+
+
+
+
+
+//endDom
