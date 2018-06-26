@@ -230,6 +230,17 @@
         
         
         
+        // 지니 메세지 랜덤 노출
+        var genieInfoMsg = [];
+        genieInfoMsg.push('다음 사진을 보려면 "지니야, 다음"');
+        genieInfoMsg.push('이전 사진을 보려면 "지니야, 이전"');
+        genieInfoMsg.push('사진에 메모를 남기려면 "지니야, 메모해줘"');
+        genieInfoMsg.push('사진을 즐겨찾기 하려면 "지니야, 즐겨찾기해줘"');
+        
+        var setGenieMsg = setInterval(function(){
+            var ranNo = Math.floor(Math.random() * genieInfoMsg.length);            
+            $(".GinieMsg").html(genieInfoMsg[ranNo]);            
+        },3000);
         
         
         
