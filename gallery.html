@@ -18,34 +18,24 @@
 <meta name="robots" content="">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="height=1080, width=1920, user-scalable=no" />
-<title>Unite Gallery - Source Files</title>
+<title>GIGAGenie Gallery</title>
 	<script type='text/javascript' src='unitegallery/js/jquery-11.0.min.js'></script>		
     <script type='text/javascript' src='javascripts/unitegallery.min.js'></script>    
 	<link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css' />
 	<script type='text/javascript' src='unitegallery/themes/default/ug-theme-default.js'></script>
-    <link rel='stylesheet' 		  href='unitegallery/themes/default/ug-theme-default.css' type='text/css' />    
+    <link rel='stylesheet' 		  href='unitegallery/themes/default/ug-theme-default.css' type='text/css' />  
+    
+    <link rel='stylesheet' 		  href='css/common.css' type='text/css' />    
 </head>
-<style type="text/css">
-    #testGinieMsg{
-        margin-bottom: 1em;
-        z-index: 9999999;
-        position: absolute;
-        top: -28px;
-        left: 500px;
-    }
-</style>
 <body>
-<!--    <button id="testEnter"></button>-->
- 	
+
+    
+    <img src="imgs/Heart_POP.png" id="heartPop" style="display: none" />
+    <span id="memoIcon" class="off"></span>  <!--  on, off  -->
+    
 	<div id="gallery" style="display:none;">
 	   
-                
-		<img alt="Preview Image 1"
-			 src="images/thumbs/thumb1.jpg"             
-			 data-image="images/big/image1.jpg"
-			 data-description="Preview Image 1 Description">
-                
-		
+    	
 		<img alt="Preview Image 2"
 			 src="images/thumbs/thumb2.jpg"
 			 data-image="images/big/image2.jpg"
@@ -135,24 +125,113 @@
 			 data-description="Preview Image 11 Description">
 			 			 
 	</div>
-	
+	    
+    <a href="#layer2" class="btn-example" id="popupTestBtn">딤처리 팝업레이어 1</a>
+    
+    
+    <!--  popup  -->
+    <div class="dim-layer">
+        <div class="dimBg"></div>
+        <div id="layer2" class="pop-layer">
+            <div class="pop-container">
+                <div class="pop-conts">                    
+                    <h1>Genie 안부확인 서비스</h1>                    
+                    <div class="btn-r"></div>
+                    <!--content //-->
+                    <p class="ctxt mb20">
+                        <span class="speakerImg"></span>
+                        메모하실 내용을 말씀해 주세요.                        
+                    </p>
+
+                    <div class="btn-r">
+                        <button class="btn-layerClose" style="background-color: #7e97d4;">취소</button>
+                        <button class="btn-layerClose">저장</button>
+                        <button class="btn-layerClose">재입력</button>
+                    </div>
+                    <!--// content-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  .popup  --> 	
+    
+    
+    
 <script type="text/javascript">
 (function(){
     var api;
     $(document).ready(function(){
         
+        $('.btn-example').click(function(){
+            var $href = $(this).attr('href');
+            layer_popup($href);
+        });
+        function layer_popup(el){
+            var $el = $(el);        
+            var isDim = $el.prev().hasClass('dimBg');   
+            isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+            var $elWidth = ~~($el.outerWidth()),
+                $elHeight = ~~($el.outerHeight()),
+                docWidth = $(document).width(),
+                docHeight = $(document).height();            
+            if ($elHeight < docHeight || $elWidth < docWidth) {
+                $el.css({
+                    marginTop: -$elHeight /2,
+                    marginLeft: -$elWidth/2
+                })
+            } else {
+                $el.css({top: 0, left: 0});
+            }
+            // 닫기 버튼 선택시  
+            $el.find('button.btn-layerClose').click(function(){
+                isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); 
+                return false;
+            });
+            // 뒤에 레이어 선택시            
+            $('.layer .dimBg').click(function(){
+                $('.dim-layer').fadeOut();
+                return false;
+            });
+        }//.layer_popup
         
         
-        var testEl = '<img alt="Preview Image 2" src="images/thumbs/thumb2.jpg" data-image="images/big/image2.jpg" data-description="Preview Image 2 Description">';		
-		$("#gallery").prepend(testEl);	 			 
-    
+//        var testEl = '<img alt="Preview Image 2" src="images/thumbs/thumb2.jpg" data-image="images/big/image2.jpg" data-description="testest">';		
+//		$("#gallery").prepend(testEl);	 			 
+        
+        // 가운데 하트        
+//        $("#heartPop").show();
+        
+        
         api = jQuery("#gallery").unitegallery({
             thumb_image_overlay_effect:true,
+            theme_enable_fullscreen_button: false,
+            theme_enable_play_button: false,
+            theme_enable_hidepanel_button: false,
+            theme_enable_text_panel: true,
+            slider_enable_zoom_panel:false,
+            slider_textpanel_enable_bg:false,
+            //slider_textpanel_css_description:{color:"black"},
+            slider_textpanel_desc_font_size:16,		
+            slider_textpanel_desc_bold:"bold",
+            slider_textpanel_css_description:{},
+            gallery_width:1920,							
+            gallery_height:1080,						
             
         });        
         
+        // heart icon
+        $(".ug-textpanel-textwrapper").append("<span  class='heartIcon on' ></span>");  // on,off
+        // ginie msg 
+        $(".ug-textpanel-textwrapper").append('<span class=\'GinieMsg\'>다음 사진을 보려면 "지니야, 다음"</span>');        
+        // date
+        $(".ug-textpanel-textwrapper").append("<span class='dateoverdes'>2018.06.25</span>");
         
-        $(".ug-textpanel-description").append("<h1 id='testGinieMsg'>test</h1>");
+        
+        
+        
+        
+        
+        
         
     });//endDomReady
 })();//endWinOnload		
